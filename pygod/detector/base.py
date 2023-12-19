@@ -482,8 +482,8 @@ class DeepDetector(Detector, ABC):
             loss_value = epoch_loss / data.x.shape[0]
             if self.gan:
                 loss_value = (self.epoch_loss_g / data.x.shape[0], loss_value)
-                
-            print('Epoch:{} Loss:{:.8f}'.format(epoch, loss_value), flush=True)
+
+             #print('Epoch:{} Loss:{:.8f}'.format(epoch, loss_value), flush=True)
             
             logger(epoch=epoch,
                    loss=loss_value,
