@@ -119,6 +119,10 @@ class DOMINANTBase(nn.Module):
         # reconstruct feature matrix
         x_ = self.attr_decoder(self.emb, edge_index)
 
+        ##added by Zhong 
+        if self.sigmoid_a:
+            x_ = torch.sigmoid(x_)
+
         # decode adjacency matrix
         s_ = self.struct_decoder(self.emb, edge_index)
 
