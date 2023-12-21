@@ -38,6 +38,9 @@ class DOMINANTBase(nn.Module):
     sigmoid_s : bool, optional
         Whether to apply sigmoid to the structure reconstruction.
         Default: ``False``.
+    sigmoid_a : bool, optional
+        Whether to apply sigmoid to the attribute reconstruction.
+        Default: ``False``.
     backbone : torch.nn.Module, optional
         The backbone of the deep detector implemented in PyG.
         Default: ``torch_geometric.nn.GCN``.
@@ -52,6 +55,7 @@ class DOMINANTBase(nn.Module):
                  dropout=0.,
                  act=torch.nn.functional.relu,
                  sigmoid_s=False,
+                 sigmoid_a=False,
                  backbone=GCN,
                  **kwargs):
         super(DOMINANTBase, self).__init__()
@@ -84,6 +88,7 @@ class DOMINANTBase(nn.Module):
                                                 dropout=dropout,
                                                 act=act,
                                                 sigmoid_s=sigmoid_s,
+                                                sigmoid_a=sigmoid_a,
                                                 backbone=backbone,
                                                 **kwargs)
 
