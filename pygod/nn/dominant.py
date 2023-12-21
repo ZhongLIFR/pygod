@@ -94,6 +94,7 @@ class DOMINANTBase(nn.Module):
 
         self.loss_func = double_recon_loss
         self.emb = None
+        self.sigmoid_a = sigmoid_a
 
     def forward(self, x, edge_index):
         """
