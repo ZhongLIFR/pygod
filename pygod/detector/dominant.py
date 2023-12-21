@@ -40,6 +40,9 @@ class DOMINANT(DeepDetector):
     sigmoid_s : bool, optional
         Whether to use sigmoid function to scale the reconstructed
         structure. Default: ``False``.
+    sigmoid_a : bool, optional
+        Whether to use sigmoid function to scale the reconstructed
+        attribute. Default: ``False``.
     backbone : torch.nn.Module, optional
         The backbone of the deep detector implemented in PyG.
         Default: ``torch_geometric.nn.GCN``.
@@ -102,6 +105,7 @@ class DOMINANT(DeepDetector):
                  weight_decay=0.,
                  act=torch.nn.functional.relu,
                  sigmoid_s=False,
+                 sigmoid_a=False,
                  backbone=GCN,
                  contamination=0.1,
                  lr=4e-3,
@@ -134,6 +138,7 @@ class DOMINANT(DeepDetector):
 
         self.weight = weight
         self.sigmoid_s = sigmoid_s
+        self.sigmoid_a = sigmoid_a
 
     def process_graph(self, data):
         DOMINANTBase.process_graph(data)
@@ -147,6 +152,7 @@ class DOMINANT(DeepDetector):
                             dropout=self.dropout,
                             act=self.act,
                             sigmoid_s=self.sigmoid_s,
+                            sigmoid_a=self.sigmoid_a,
                             backbone=self.backbone,
                             **kwargs).to(self.device)
 
